@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - Duel LP Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --primary-light: #e0e7ff;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --text-light: #9ca3af;
+            --bg-body: #f3f4f6;
+            --bg-card: #ffffff;
+            --border: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #818cf8;
+                --primary-hover: #6366f1;
+                --primary-light: #312e81;
+                --text-main: #f3f4f6;
+                --text-muted: #d1d5db;
+                --text-light: #9ca3af;
+                --bg-body: #0f172a;
+                --bg-card: #1e293b;
+                --border: #334155;
+                --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+                --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: var(--bg-card);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 30px;
+        }
+
+        .logo-area {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #4f46e5, #818cf8);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+        }
+
+        .logo-area svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            letter-spacing: -0.025em;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .date {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .intro {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .icon-wrapper svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-main);
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-weight: 400;
+        }
+
+        strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        .badge-list {
+            list-style: none;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .badge-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background-color: var(--bg-body);
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .badge-item-icon {
+            color: #10b981;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .badge-item-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .badge-item-text strong {
+            display: block;
+            margin-bottom: 2px;
+            color: var(--text-main);
+        }
+
+        footer {
+            margin-top: 40px;
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 500;
+            margin-top: 15px;
+            box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2);
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .contact-btn:active {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo-area">
+                <!-- Calculator-like icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 15.75V18m-3-3.675v3.675m-3-3v3m12-11.25v12a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 18v-12A2.25 2.25 0 0 1 6.75 3.75h10.5a2.25 2.25 0 0 1 2.25 2.25Zm-10.5 3h.008v.008H8.25V6.75Zm.008 3h-.008V9.75h.008v.008Zm0 3h-.008v-.008h.008v.008Zm0 3h-.008v-.008h.008v.008Zm3-9h-.008V6.75h.008v.008Zm0 3h-.008V9.75h.008v.008Zm0 3h-.008v-.008h.008v.008Zm0 3h-.008v-.008h.008v.008Zm3-9h-.008V6.75h.008v.008Zm0 3h-.008V9.75h.008v.008Zm0 3h-.008v-.008h.008v.008Z" />
+                </svg>
+            </div>
+            <h1>Política de Privacidade</h1>
+            <div class="subtitle">Duel LP Calculator</div>
+            <div class="date">Última atualização: 8 de Junho de 2026</div>
+        </header>
+
+        <p class="intro">
+            Esta Política de Privacidade descreve como o aplicativo <strong>Duel LP Calculator</strong> (doravante referido como "Aplicativo", "nós" ou "nosso"), desenvolvido por <strong>Peet Forge</strong>, trata os seus dados ao utilizar o nosso serviço.
+        </p>
+
+        <section>
+            <div class="section-header">
+                <div class="icon-wrapper">
+                    <!-- Shield Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.57-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                    </svg>
+                </div>
+                <h2>1. Coleta e Uso de Dados</h2>
+            </div>
+            <p>
+                A nossa abordagem em relação à privacidade é extremamente simples e transparente: <strong>Nós não coletamos, não armazenamos, não processamos e não compartilhamos nenhuma informação de caráter pessoal dos nossos usuários.</strong>
+            </p>
+            <p>
+                O Duel LP Calculator foi projetado para funcionar de forma 100% offline e local. Todas as informações que você insere no aplicativo são armazenadas única e exclusivamente no armazenamento interno do seu próprio dispositivo, de modo a garantir a sua total privacidade.
+            </p>
+
+            <ul class="badge-list">
+                <li class="badge-item">
+                    <div class="badge-item-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="badge-item-text">
+                        <strong>Histórico e Nomes de Jogadores</strong>
+                        Armazenados estritamente na memória de navegação local do aplicativo no seu celular (utilizando localStorage). Nenhuma dessas informações é enviada para servidores externos.
+                    </div>
+                </li>
+                <li class="badge-item">
+                    <div class="badge-item-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="badge-item-text">
+                        <strong>Ausência de Login ou Contas</strong>
+                        Você não precisa criar um cadastro, fornecer o seu e-mail, telefone ou vincular redes sociais para utilizar todos os recursos do aplicativo.
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <div class="icon-wrapper">
+                    <!-- Share Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+                    </svg>
+                </div>
+                <h2>2. Compartilhamento de Informações com Terceiros</h2>
+            </div>
+            <p>
+                Como não coletamos e nem armazenamos dados, <strong>não realizamos qualquer compartilhamento, venda ou distribuição de informações</strong> para terceiros, anunciantes ou empresas parceiras.
+            </p>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <div class="icon-wrapper">
+                    <!-- Key Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25a3 3 0 0 1 3 3m3 0a6 6 0 1 1-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1 1 21.75 8.25Z" />
+                    </svg>
+                </div>
+                <h2>3. Permissões do Dispositivo</h2>
+            </div>
+            <p>
+                O aplicativo foi desenvolvido utilizando o framework Capacitor e funciona de forma autônoma sem requerer acesso a recursos sensíveis do seu smartphone, tais como:
+            </p>
+            <ul style="margin-left: 20px; margin-bottom: 15px; color: var(--text-muted);">
+                <li>Câmera e Microfone</li>
+                <li>Localização (GPS)</li>
+                <li>Lista de Contatos</li>
+                <li>Arquivos e fotos pessoais</li>
+            </ul>
+            <p>
+                Apenas recursos básicos do sistema, como o motor de vibração (para feedback táctil ao clicar em botões) ou sintetizador de som local, são utilizados, sem qualquer envio de dados para a internet.
+            </p>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <div class="icon-wrapper">
+                    <!-- Heart Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                    </svg>
+                </div>
+                <h2>4. Proteção à Criança e Adolescente</h2>
+            </div>
+            <p>
+                O Duel LP Calculator é classificado como <strong>Livre</strong> e é adequado para todas as faixas etárias. Por não possuir mecanismos de coleta de dados de nenhuma espécie, garantimos a total proteção de crianças menores de 13 anos em conformidade com as diretrizes da Google Play e com a LGPD (Lei Geral de Proteção de Dados).
+            </p>
+        </section>
+
+        <section>
+            <div class="section-header">
+                <div class="icon-wrapper">
+                    <!-- ArrowPath Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                    </svg>
+                </div>
+                <h2>5. Atualizações desta Política</h2>
+            </div>
+            <p>
+                Esta Política de Privacidade poderá ser alterada ocasionalmente para refletir melhorias no aplicativo ou conformidade com novas exigências legais. Sempre que houver alguma alteração significativa, atualizaremos a data de "Última atualização" no topo deste documento.
+            </p>
+        </section>
+
+        <section style="text-align: center; margin-top: 40px;">
+            <div class="section-header" style="justify-content: center;">
+                <div class="icon-wrapper">
+                    <!-- Envelope Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+                </div>
+                <h2>6. Contato</h2>
+            </div>
+            <p>
+                Se você tiver qualquer dúvida sobre o funcionamento do aplicativo ou sobre esta Política de Privacidade, envie um e-mail para o desenvolvedor:
+            </p>
+            <a href="mailto:emptytrout44@gmail.com" class="contact-btn">
+                emptytrout44@gmail.com
+            </a>
+        </section>
+
+        <footer>
+            &copy; 2026 Peet Forge. Todos os direitos reservados.<br>
+            Este aplicativo é uma calculadora independente e não oficial.
+        </footer>
+    </div>
+</body>
+</html>
